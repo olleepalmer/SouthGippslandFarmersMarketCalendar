@@ -11,9 +11,5 @@
             "src": "/(.*)",
             "dest": "app.py"
         }
-    ],
-    "env": {
-        "FLASK_ENV": "production",
-        "GOOGLE_API_KEY": "@google_api_key"
-    }
+    ]
 }
