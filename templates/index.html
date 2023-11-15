@@ -1,0 +1,146 @@
+<!doctype html>
+<html style="height: 100%;">
+<head>
+    <title>South Gippsland Farmers Markets</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta description="Find out what markets on this weekend">  
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+          body
+        {
+            background-color: #FFFCE9;
+
+        }
+        .container-fluid {
+            height: 100%;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        p, .alert {
+            font-family: "Inter";
+            font-weight: 300;
+        }
+
+        h1, h2, h3, h4, h5, .navbar {
+            font-family: "Inter";
+            font-weight: 300;
+        }
+
+        a {
+            color: black;
+        }
+
+        h5 {
+            opacity: 0.5;
+        }
+        main {
+    flex: 1;
+}
+
+        iframe {
+    display:block;
+    width:100%;
+    height: 100%;
+}
+
+        /* Rest of your CSS */
+    </style>
+</head>
+<body class="d-flex flex-column h-100">
+    <div class="container">
+   
+</div>
+    <main class="flex-shrink-0">
+        <div class="container mt-4">
+            <h1>South Gippsland Farmers' Markets</h1>
+            <h3 class="mt-5">What's on this weekend?</h3>
+
+        <div class="row mt-4">
+            <div class="col-12 col-md-6">
+
+                <h4>{{ saturday_label }}</h4>
+                {% for market in saturday_markets %}
+
+           <div class="col">
+                          <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                              <div class="col-md-4">
+                                <iframe class="map"
+                                src="https://www.google.com/maps/embed/v1/place?key={{ google_api_key }}&q={{ market.address | urlencode }}"
+                                allowfullscreen>
+                        </iframe>
+                        
+                        
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                  <h5 class="card-title">{{ market.name }}</h5>
+                                  <p class="card-text">
+                                    <small class="text-muted">    {{ market.hours | safe }}    </small>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {% endfor %}
+
+                      
+         
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <h4>{{ sunday_label }}</h4>
+                    {% for market in sunday_markets %}
+
+                    <div class="col">
+                                   <div class="card mb-3" style="max-width: 540px;">
+                                     <div class="row g-0">
+                                       <div class="col-md-4">
+                                         <iframe class="map"
+                                         src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD4zz0GtZWNrInEW0A1uFXYkeFpZNdCrEM&q={{ market.address | urlencode }}"
+                                         allowfullscreen>
+                                         </iframe>
+                                       </div>
+                                       <div class="col-md-8">
+                                         <div class="card-body">
+                                           <h5 class="card-title">{{ market.name }}</h5>
+                                           <p class="card-text">
+                                             <small class="text-muted">    {{ market.hours | safe }}    </small>
+                                           </p>
+                                         </div>
+                                       </div>
+                                     </div>
+                                   </div>
+                                 </div>
+                                 {% endfor %}
+                               
+                 </div>
+                 
+        </div>
+    </div>
+    </main>
+    
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <span class="text">
+                <p>
+                    Dates sourced from <a href="https://images.impartmedia.com/visitbasscoast.com.au/Documents/2023_06_29__Bass_Coast_Market_Calendar_2023_2024.pdf">Visit Bass Coast</a>
+             </p>
+             <p>
+                    This calendar reflects the regular schedule and is <em>not</em> updated on a week by week basis.
+                </p>
+                <p>
+                    Anything wrong or looking weird? <a href="mailto:op@publicbasic.com">Let me know</a>.
+                </p>
+                </span>
+        </div>
+    </footer>
+</body>
+</html>
