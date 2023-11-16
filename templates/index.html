@@ -27,11 +27,16 @@
             font-weight: 300;
         }
 
-        h1, h2, h3, h4, h5, .navbar {
+        h1, h5, .navbar {
             font-family: "Inter";
-            font-weight: 300;
+            font-weight: 500;
         }
+       
 
+        h3  {
+            font-family: "Inter";
+            font-weight: 200;
+        }
         a {
             color: black;
         }
@@ -49,8 +54,7 @@
     height: 100%;
 }
 
-        /* Rest of your CSS */
-    </style>
+  </style>
 </head>
 <body class="d-flex flex-column h-100">
     <div class="container">
@@ -58,8 +62,11 @@
 </div>
     <main class="flex-shrink-0">
         <div class="container mt-4">
-            <h1>South Gippsland Farmers' Markets</h1>
-            <h3 class="mt-5">What's on this weekend?</h3>
+            <h1 class="h3">South Gippsland Farmers' Markets</h1>
+          
+            <h3 class="mt-4 mt-md-5">What's on this weekend?</h3>
+
+           
 
         <div class="row mt-4">
             <div class="col-12 col-md-6">
@@ -95,7 +102,7 @@
          
                 </div>
 
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 mt-5 mt-md-0">
                     <h4>{{ sunday_label }}</h4>
                     {% for market in sunday_markets %}
 
@@ -130,12 +137,13 @@
     <footer class="footer mt-auto py-3">
         <div class="container">
             <span class="text">
-                <p>
-                    Dates sourced from <a href="https://images.impartmedia.com/visitbasscoast.com.au/Documents/2023_06_29__Bass_Coast_Market_Calendar_2023_2024.pdf">Visit Bass Coast</a>
-             </p>
-             <p>
-                    This calendar reflects the regular schedule and is <em>not</em> updated on a week by week basis.
-                </p>
+           
+              <div class="alert alert-warning" role="alert">
+                This calendar reflects the regular schedule and is <em>not</em> updated on a week by week basis.
+              </div>
+              <p>
+                Dates sourced from <a href="https://images.impartmedia.com/visitbasscoast.com.au/Documents/2023_06_29__Bass_Coast_Market_Calendar_2023_2024.pdf">Visit Bass Coast</a>
+         </p>
                 <p>
                     Anything wrong or looking weird? <a href="mailto:op@publicbasic.com">Let me know</a>.
                 </p>
