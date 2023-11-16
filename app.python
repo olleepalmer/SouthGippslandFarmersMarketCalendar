@@ -103,7 +103,6 @@ def index():
 
     # Move the API key retrieval here
     google_api_key = os.environ.get('GOOGLE_API_KEY')
-    print("API Key:", google_api_key)  # This will now print the key in the console
 
     # Combine all necessary variables in a single return statement
     return render_template('index.html', saturday_label=saturday_label, 
