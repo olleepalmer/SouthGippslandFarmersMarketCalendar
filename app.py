@@ -2,10 +2,11 @@ import os
 from flask import Flask, render_template, request
 from datetime import datetime, timedelta
 from math import ceil
+from apscheduler.schedulers.background import BackgroundScheduler
+import requests
 from dotenv import load_dotenv
 load_dotenv()
 google_api_key = os.environ.get('GOOGLE_API_KEY')
-
 
 app = Flask(__name__)
 
@@ -110,6 +111,23 @@ def index():
                            sunday_label=sunday_label, 
                            sunday_markets=sunday_markets, 
                            google_api_key=google_api_key)
+
+
+
+
+def ping():
+    """Function to send a request to the app to keep it awake."""
+    try:
+        print("Pinging the app to keep it awake.")
+        requests.get("https://south-gippsland-farmers-market-finder.onrender.com/")  # Replace with your app's URL
+    except:
+        print("Ping failed.")
+
+# Initialize the scheduler
+scheduler = BackgroundScheduler()
+scheduler.add_job(func=ping, trigger="interval", minutes=30)  # You can change the interval
+scheduler.start()
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=os.environ.get('PORT', 5000))
